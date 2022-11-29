@@ -3,8 +3,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/node:lts
+      - image: circleci/python:3.10
     steps:
       - checkout
-      - run: yarn install
-      - run: yarn test
+      - run: pip install -r requirements.txt
+      # - run: yarn test
