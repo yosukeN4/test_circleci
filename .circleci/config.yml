@@ -1,9 +1,35 @@
-version: 2
 
-jobs:
-  build:
+executors:
+  default:
     docker:
       - image: cimg/python:3.10
+    working_directory: ~/repo
+
+version: 2.1
+jobs:
+  setup:
+    executor: default
     steps:
       - checkout
-      - run: pip install -r requirements.txt
+      - run: 
+          name: installing required modules 
+          command: pip install -r requirements.tx
+
+
+  tests:
+    executor: default
+    steps:
+      - checkout
+      - run:
+          name: test phase 
+          command: pytset
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - setup
+      - tests:
+          requires:
+            - setup
+
