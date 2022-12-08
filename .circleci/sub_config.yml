@@ -37,38 +37,15 @@ jobs:
 
   env_var_check:
     executor: default
-    environment:
-      NODE_ENV: another_world
     steps:
-      - run:
-          name: use build-in env_var
-          command: |
-            echo "CI is '$CI'"
-            echo "CIRCLE_BRANCH is '$CIRCLE_BRANCH'"
-      - run:
-          name: use user-defined env_var
-          environment: 
-            MODE: production
-          command: |
-            echo "Inline env_var is '$MODE'"
-      - run:
-          name: use env_var defined in jobs
-          command: |
-            echo "NODE_ENV is '$NODE_ENV'"
-      - run:
-          name: use env_var set inside project settings
-          command: |
-            echo "YSK_ONE_VAR is '$YSK_ONE_VAR'"
-            echo "YSK_TWO_VAR is '$YSK_TWO_VAR'"
     
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - env_var_check
-      # - setup
-      # - tests:
-      #     requires:
-      #       - setup
+      - setup
+      - tests:
+          requires:
+            - setup
 
