@@ -31,7 +31,7 @@ jobs:
           at: .
       - run:
           name: test phase 
-          command: pytset
+          command: pytest
 
 workflows:
   version: 2
