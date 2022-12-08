@@ -31,7 +31,9 @@ jobs:
           at: .
       - run:
           name: test phase 
-          command: pytest
+          command: |
+            source ./venv/bin/activate
+            pytest
 
 workflows:
   version: 2
