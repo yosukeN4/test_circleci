@@ -33,7 +33,9 @@ jobs:
           command: |
             source ./venv/bin/activate
             cd tests
-            black . && flake8 . && mypy .
+            black .
+            flake8 .
+            mypy .
 
   tests:
     executor: default
