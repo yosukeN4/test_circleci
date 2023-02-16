@@ -1,2 +1,5 @@
 pytest
 aws-sam-cli
+black
+flake8
+mypy
