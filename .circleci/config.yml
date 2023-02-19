@@ -85,7 +85,10 @@ workflows:
      - format_check:
           requires:
             - setup
+          filters:
+            branches:
+              only: /^check-.*/
      - tests:
           requires:
-            - format_check
+            - setup
 
